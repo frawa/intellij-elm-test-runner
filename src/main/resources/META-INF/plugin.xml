@@ -30,17 +30,17 @@
         <li><b>0.4.3</b> <em>(2018-12-3)</em> - Fixes
         <ul>
           <li>Upgrade to Elm plugin version 2.1.0</li>
-          <li>Fix compile error messages to be complete/li>
+          <li>Fix compile error messages to be complete</li>
         </ul
         </li>
         <li><b>0.4.0</b> <em>(2018-12-2)</em> - Feature
         <ul>
-          <li>Navigate to compile errors/li>
+          <li>Navigate to compile errors</li>
         </ul
         </li>
         <li><b>0.3.6</b> <em>(2018-11-29)</em> - Fixes
         <ul>
-          <li>Navigation with nested suites/li>
+          <li>Navigation with nested suites</li>
         </ul
         </li>
         <li><b>0.3.5</b> <em>(2018-11-27)</em> - Open for future versions of IntelliJ
