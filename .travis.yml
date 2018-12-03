@@ -33,7 +33,8 @@ cache:
     - $HOME/.gradle/wrapper/
 
 notifications:
-  email: false
+  email:
+    - agilecoderfrank@gmail.com
 
 sudo: false
 
