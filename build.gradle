@@ -6,51 +6,33 @@ repositories {
     mavenCentral()
 }
 
-version = '0.4.3'
+version = "${version}"
 
 allprojects {
     apply plugin: 'java'
-    sourceCompatibility = '1.8'
-    targetCompatibility = '1.8'
+    sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
     tasks.withType(JavaCompile) { options.encoding = 'UTF-8' }
 
     apply plugin: 'org.jetbrains.intellij'
     intellij {
-        version '2018.2'
+        version ideaVersion
         pluginName 'ElmTestRunnerPlugin'
         updateSinceUntilBuild false
 
         //plugin dependencies, see https://github.com/JetBrains/gradle-intellij-plugin
-        //plugins 'IntelliLang'
-        plugins 'org.elm.klazuka:2.1.0'
+        plugins 'IntelliLang'
+        plugins "org.elm.klazuka:${elmPluginVersion}"
     }
 
     publishPlugin {
         username 'agilecoderfrank@gmail.com'
-        //add your user's password on the command line using '-Dintellij.publish.password=...'
-        password System.properties['intellij.publish.password']
+        password System.getenv('JETBRAINS_PASSWORD')
 
         //use a custom channel if you'd offer nightly/unstable versions
         //channels 'eap'
     }
 
-    // code coverage using the Jacoco engine, see https://docs.gradle.org/current/userguide/jacoco_plugin.html
-    // the coverage reports will be available at build/reports/coverage/test/html/index.html
-    apply plugin: 'jacoco'
-    jacoco {
-        toolVersion = "0.7.9"
-        reportsDir = file("$buildDir/reports/coverage")
-    }
-    test {
-        finalizedBy jacocoTestReport
-        jacoco {
-            enabled true
-            append false
-            includes ["com.*"]
-        }
-    }
-
-    // test logging configuration, shows test progress and messages to standard error
     // see https://docs.gradle.org/current/javadoc/org/gradle/api/tasks/testing/logging/TestLogEvent.html
     test {
         testLogging {

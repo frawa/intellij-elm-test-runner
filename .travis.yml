@@ -17,6 +17,12 @@ install:
 script:
   - ./gradlew check --info --console=plain --max-workers=1 --no-daemon
 
+deploy:
+  - provider: script
+    script: ORG_GRADLE_PROJECT_version=$TRAVIS_TAG ./gradlew publishPlugin
+    on:
+      tags: true
+
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
